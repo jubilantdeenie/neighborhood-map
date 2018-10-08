@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from "./component/Map";
+import Map from './component/Map';
 import SquareAPI from './API/';
 
 class App extends Component {
   constructor () {
-    super(),
+    super();
     this.state = {
       venues: [],
       markers: [],
@@ -13,31 +13,32 @@ class App extends Component {
       zoom: 14
     };
   }
-  componenetDidMount() {
+  componentDidMount() {
     SquareAPI.search ({
-      near: "Portland, OR",
+      near: "Portland,OR",
       query: "gluten-free",
       limit: 12
     }).then(results => {
+      console.log(results);
       const { venues } = results.response;
       const { center } = results.response.geocode.feature.geometry;
-      const { markers } = venues.map(venue => {
+      const markers = venues.map(venue => {
+        
         return {
-          lat: venue.location.lat, 
+          lat: venue.location.lat,
           lng: venue.location.lng,
           isOpen: false,
           isVisible: true,
-        }
-      })
+        };
+      });
       this.setState({ venues, center, markers});
-      console.log(results);
     });
   }
 
   render() {
     return (
       <div className="App">
-      <Map {...this.state} />
+        <Map {...this.state} /> 
       </div>
     );
   }
