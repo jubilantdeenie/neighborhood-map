@@ -13,11 +13,19 @@ class App extends Component {
       zoom: 14
     };
   }
-  handleMarkerClick= (marker) => {
-    marker.isOpen = true;
-    this.setState({markers: Object.assign(this.state.markers, marker)});
-
+  closeAllMarkers = () => {
+    const markers = this.state.markers.map(marker => {
+      marker.isOpen = false;
+      return marker;
+    });
+    this.setState({ markers: Object.assign(this.state.markers, markers)} );
   };
+
+  handleMarkerClick = marker => {
+    this.closeAllMarkers();
+    marker.isOpen = true;
+    this.setState({ markers: Object.assign(this.state.markers, marker) });
+}; 
   componentDidMount() {
     SquareAPI.search ({
       near: "Portland,OR",
