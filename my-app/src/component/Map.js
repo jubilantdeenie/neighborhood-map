@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withScriptjs, withGoogleMap, GoogleMap, InfoWindow, Marker } from 'react-google-maps';
 
   const MyMapComponent = withScriptjs (
   withGoogleMap(props => (
@@ -10,7 +10,13 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-map
         center={props.center}
     >
       {props.markers && props.markers.filter(marker => marker.isVisible).map((marker, idx) => (
-      <Marker key={idx} position={{lat: marker.lat, lng: marker.lng}} />
+      <Marker key={idx} position={{lat: marker.lat, lng: marker.lng}} onClick={ () => props.handleMarkerClick(marker)} >
+        {marker.isOpen && (
+        <InfoWindow>  
+          <p>Spectacular! Spectacular!</p>
+        </InfoWindow>
+        )}
+      </Marker>
       ))}
     </GoogleMap>
     ))
