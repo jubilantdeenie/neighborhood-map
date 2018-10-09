@@ -10,7 +10,6 @@ class App extends Component {
     this.state = {
       venues: [],
       markers: [],
-      center: [],
       zoom: 12
     };
   }
