@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .App {
@@ -32,8 +32,8 @@ body {
   list-style: none;
   font-size: 1rem;
   padding: .5rem;
-  margin-top: 1 rem;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0,3);
+  margin-top: 1rem;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
 
 .App-logo {
