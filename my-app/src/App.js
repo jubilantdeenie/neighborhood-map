@@ -10,7 +10,7 @@ class App extends Component {
       venues: [],
       markers: [],
       center: [],
-      zoom: 14
+      zoom: 12
     };
   }
   closeAllMarkers = () => {
@@ -38,7 +38,7 @@ class App extends Component {
     SquareAPI.search ({
       near: "Portland,OR",
       query: "gluten-free",
-      limit: 20
+      limit: 12
     }).then(results => {
       console.log(results);
       const { venues } = results.response;

@@ -4,20 +4,35 @@ import { withScriptjs, withGoogleMap, GoogleMap, InfoWindow, Marker } from 'reac
   const MyMapComponent = withScriptjs (
   withGoogleMap(props => (
     <GoogleMap
-      defaultZoom={12} zoom={props.zoom}
+      defaultZoom={12} 
+      zoom={props.zoom}
       defaultCenter={{
         lat: 45.5122308, lng: -122.6587185}}
         center={props.center}
     >
-      {props.markers && props.markers.filter(marker => marker.isVisible).map((marker, idx) => (
-      <Marker key={idx} position={{lat: marker.lat, lng: marker.lng}} onClick={ () => props.handleMarkerClick(marker)} >
-        {marker.isOpen && (
+      {props.markers && 
+        props.markers.filter(marker => 
+          marker.isVisible).map((marker, idx) => {
+          const venueInfo = props.venues.find(venue => venue.id && marker.id);
+      return (
+        <Marker 
+        key={idx} 
+        position={{lat: marker.lat, lng: marker.lng}} 
+        onClick={() => props.handleMarkerClick(marker)} >
+        
+        {marker.isOpen && 
+        venueInfo.bestPhoto && (
         <InfoWindow>  
-          <p>Spectacular! Spectacular!</p>
+        <React.Fragment>
+          <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} 
+          alt= {"Venue image"} />
+          <p>{venueInfo.name}</p>
+        </React.Fragment>
         </InfoWindow>
         )}
       </Marker>
-      ))}
+        );
+        })}
     </GoogleMap>
     ))
   );
