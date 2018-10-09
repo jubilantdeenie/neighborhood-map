@@ -35,6 +35,11 @@ class App extends Component {
       console.log(newVenue)
     });
 }; 
+
+handleListItemClick = venue => {
+  console.log(venue);
+}
+
   componentDidMount() {
     SquareAPI.search ({
       near: "Portland,OR",
