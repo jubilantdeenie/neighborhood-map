@@ -10,7 +10,10 @@ class App extends Component {
     this.state = {
       venues: [],
       markers: [],
-      zoom: 12
+      zoom: 15,
+      updateSuperState: obj => {
+        this.setState(obj);
+      }
     };
   }
   closeAllMarkers = () => {
@@ -36,14 +39,16 @@ class App extends Component {
 }; 
 
 handleListItemClick = venue => {
+  const marker = this.state.markers.find(marker => marker.id === venue.id);
+  this.handleMarkerClick(marker);
   console.log(venue);
 }
 
   componentDidMount() {
     SquareAPI.search ({
       near: "Portland,OR",
-      query: "gluten-free",
-      limit: 12
+      query: "artist gallery",
+      limit: 17
     }).then(results => {
       console.log(results);
       const { venues } = results.response;
