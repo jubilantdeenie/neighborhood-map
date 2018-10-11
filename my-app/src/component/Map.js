@@ -1,3 +1,4 @@
+/* global google */
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, InfoWindow, Marker } from 'react-google-maps';
 
@@ -12,14 +13,15 @@ import { withScriptjs, withGoogleMap, GoogleMap, InfoWindow, Marker } from 'reac
     >
       {props.markers && 
         props.markers.filter(marker => 
-          marker.isVisible).map((marker, idx) => {
+          marker.isVisible).map((marker, idx, arr) => {
           const venueInfo = props.venues.find(venue => venue.id && marker.id);
       return (
         <Marker 
         key={idx} 
         position={{lat: marker.lat, lng: marker.lng}} 
-        onClick={() => props.handleMarkerClick(marker)} >
-        
+        onClick={() => props.handleMarkerClick(marker)} 
+        animation= {marker.length === 1 ? google.maps.Animation.BOUNCE : google.maps.Animation.DROP} >
+
         {marker.isOpen && 
         venueInfo.bestPhoto && (
         <InfoWindow>  
@@ -27,6 +29,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, InfoWindow, Marker } from 'reac
           <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} 
           alt= {"Venue image"} />
             <p>{venueInfo.name}</p>
+            <p>{venueInfo.location}</p>
         </React.Fragment>
         </InfoWindow>
         )}

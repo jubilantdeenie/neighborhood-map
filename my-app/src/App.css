@@ -2,9 +2,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  font-size: 26px;
-  background: #495149;
-  font-family: 'Niramit', sans-serif;
+  font-size: 44px;
+  background: #43061e;
+  font-family: 'Special Elite', cursive;
 }
 
 .App {
@@ -33,12 +33,12 @@ body {
 .listItem {
   list-style: none;
   font-size: 1rem;
-  padding: .5rem;
+  padding: 1rem;
   margin-top: 1rem;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
   cursor: pointer;
-  background: #7aa95c;
-  color: #1e0f1c;
+  background: #ece1ee;
+  color: #1d0029;
   display: flex;
   align-items: center; 
   border-radius: 3px;
