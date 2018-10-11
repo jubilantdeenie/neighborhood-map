@@ -5,21 +5,31 @@ export default class SideBar extends Component {
     constructor() {
         super();
         this.state = {
-            query: ""
+            query: "",
+            venues: []
         };
     }
 
-handleFilterVenues = () => {};
+handleFilterVenues = () => {
+    if (this.state.query.trim() === "") {
+        const venues = this.props.venues.filter(venue => 
+            venue.name.toLowerCase().includes(this.state.query.toLowerCase())
+        );
+        return venues;
+        console.log(venues);
+        }
+        return this.props.venues;
+};
 
 handleChange = e => {
     this.setState({query: e.target.value});
+    
     const markers = this.props.venues.map(venue => {
-        console.log(" THIS IS THE " + this.props.venues);
-        const isMatched = marker.name
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase());
+        const isMatched = venue.name
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase());
         const marker = this.props.markers.find(marker => marker.id === venue.id);
-        if(isMatched) {
+        if (isMatched) {
             marker.isVisible = true;
         }else{
             marker.isVisible = false;
@@ -31,12 +41,17 @@ handleChange = e => {
 };
    
    
-   render(){
+   render() {
     return (<div className="sideBar">
         <input type={'search'} id={'search'} 
-        placeholder={'Filter Venues'} />
-        <VenueList {...this.props} 
-        handleListItemClick={this.props.handleListItemClick} />
+        placeholder={'Filter Venues'} 
+        onChange= {this.handleChange} 
+        />
+        <VenueList 
+        {...this.props} 
+        venues={this.handleFilterVenues()}
+        handleListItemClick={this.props.handleListItemClick} 
+        />
     </div>
     );
    }
