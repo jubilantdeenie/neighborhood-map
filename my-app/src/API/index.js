@@ -32,9 +32,9 @@ class Helper {
         };
         return fetch(
             `${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(urlPrams)}`,
-            requestData).then(res => res.json());
+            requestData).then(res => res.json())
     };
-}
+  }
 
 export default class SquareAPI {
     static search (urlPrams) {
@@ -45,5 +45,8 @@ export default class SquareAPI {
     }
     static getVenuePhotos (VENUE_ID) {
         return Helper.simpleFetch(`/venues/${VENUE_ID}/photos`, 'GET');
+    }
+    static getVenueLinks (VENUE_ID) {
+        return Helper.simpleFetch(`/venues/${VENUE_ID}/links`, 'GET');
     }
 }

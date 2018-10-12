@@ -27,9 +27,10 @@ import { withScriptjs, withGoogleMap, GoogleMap, InfoWindow, Marker } from 'reac
         <InfoWindow>  
         <React.Fragment>
           <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} 
-          alt= {"Venue image"} />
-            <p>{venueInfo.name}</p>
-            <p>{venueInfo.location}</p>
+          alt= {"The gallery"} />
+            <p>{venueInfo.name}</p> 
+            <p>{venueInfo.location.address}</p> 
+            <p>{venueInfo.url}</p>      
         </React.Fragment>
         </InfoWindow>
         )}

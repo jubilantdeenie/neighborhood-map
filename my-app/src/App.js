@@ -30,8 +30,7 @@ class App extends Component {
     this.setState({ markers: Object.assign(this.state.markers, marker) });
     const venue = this.state.venues.find(venue => venue.id && marker.id);
 
-    SquareAPI.getVenueDetails
-    (marker.id).then(res => {
+    SquareAPI.getVenueDetails(marker.id).then(res => {
       const newVenue = Object.assign(venue, res.response.venue);
       this.setState({venues: Object.assign(this.state.venues, newVenue)});
       console.log(newVenue)
@@ -47,8 +46,8 @@ handleListItemClick = venue => {
   componentDidMount() {
     SquareAPI.search ({
       near: "Portland,OR",
-      query: "artist gallery",
-      limit: 17
+      query: "contemporary gallery",
+      limit: 10
     }).then(results => {
       console.log(results);
       const { venues } = results.response;
