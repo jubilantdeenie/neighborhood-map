@@ -54,6 +54,7 @@ handleChange = e => {
         venues={this.handleFilterVenues()}
         handleListItemClick={this.props.handleListItemClick} 
         />
+        <a href="#search" className="skip-link">return to gallery search</a>
     </div>
     );
    }
