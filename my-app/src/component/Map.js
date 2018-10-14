@@ -25,12 +25,12 @@ import { withScriptjs, withGoogleMap, GoogleMap, InfoWindow, Marker } from 'reac
         {marker.isOpen && 
         venueInfo.bestPhoto && (
         <InfoWindow>  
-        <React.Fragment>
+        <React.Fragment aria-label="location and website" role="textbox" tabindex="0">
           <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} 
           alt= {"The gallery"} />
-            <p>{venueInfo.name}</p> 
-            <p>{venueInfo.location.address}</p> 
-            <p>{venueInfo.url}</p>      
+            <p>{venueInfo.name}</p>  
+            <p>{venueInfo.url}</p> 
+            <p>{venueInfo.location.address}</p>     
         </React.Fragment>
         </InfoWindow>
         )}
@@ -45,6 +45,7 @@ export default class Map extends Component {
   render () {
     return (
     <MyMapComponent
+      id="map" aria-label="area map" role="none" tabindex="0"
       {...this.props}
       googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyACxrm7b9GlF8v5fcTtl-VkSxXlM9Y5BcE"
       loadingElement={<div style={{ height: `100%` }} />}

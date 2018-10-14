@@ -45,6 +45,8 @@ handleChange = e => {
         <input type={'search'} id={'search'} 
         placeholder={'Filter Venues'} 
         onChange= {this.handleChange} 
+        className="filter-options" aria-label="filter options" 
+        role="search" tabIndex="0"
         />
         <h1>Art Scene PDX</h1>
         <VenueList 
