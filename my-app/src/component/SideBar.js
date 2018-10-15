@@ -45,16 +45,19 @@ handleChange = e => {
         <input type={'search'} id={'search'} 
         placeholder={'Filter Venues'} 
         onChange= {this.handleChange} 
-        className="filter-options" aria-label="filter options" 
+        className="filter-options" aria-label="gallery name search" 
         role="search" tabIndex="0"
         />
         <h1>Art Scene PDX</h1>
         <VenueList 
         {...this.props} 
         venues={this.handleFilterVenues()}
-        handleListItemClick={this.props.handleListItemClick} 
+        handleListItemClick={this.props.handleListItemClick}
+        aria-label="gallery list" 
+        role="textbox" tabIndex="0"
         />
-        <a href="#search" className="skip-link">return to gallery search</a>
+        <a href="#search" className="skip-link">return to search</a>
+        <img src=".img/powered-by-foursquare-white" id="foursquarePower" alt="foursquare logo" />
     </div>
     );
    }
