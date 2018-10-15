@@ -16,18 +16,20 @@ class App extends Component {
       }
     };
   }
-  { /* Close all additional markers */ }
+  
   closeAllMarkers = () => {
+    {/* Close all additional markers */}
     const markers = this.state.markers.map(marker => {
       marker.isOpen = false;
       return marker;
     });
     this.setState({ markers: Object.assign(this.state.markers, markers)} );
   };
-  {/* When a marker is clicked retrieve venue info  */}
+ 
   handleMarkerClick = marker => {
     this.closeAllMarkers();
     marker.isOpen = true;
+    {/* When a marker is clicked retrieve venue info  */}
     this.setState({ markers: Object.assign(this.state.markers, marker) });
     const venue = this.state.venues.find(venue => venue.id && marker.id);
 
@@ -37,14 +39,16 @@ class App extends Component {
       console.log(newVenue)
     });
 }; 
-{/* Click on list item to display modal data */}
+
 handleListItemClick = venue => {
+  {/* Click on list item to call marker info */}
   const marker = this.state.markers.find(marker => marker.id === venue.id);
   this.handleMarkerClick(marker);
   console.log(venue);
 }
-{/* Venue search parameters */}
+
   componentDidMount() {
+    {/* Venue search parameters */}
     SquareAPI.search ({
       near: "Portland,OR",
       query: "contemporary gallery",
@@ -67,8 +71,9 @@ handleListItemClick = venue => {
     });
   }
 
-{/* Display sidebar and map components */}
+
   render() {
+    {/* Display sidebar and map components */}
     return (
       <div className="App">
         <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
